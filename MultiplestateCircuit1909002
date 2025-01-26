@@ -1,0 +1,48 @@
+﻿øõTRiLOGI Ver 5.0
+0,Start
+1,Stop
+2,S0
+3,S1
+4,S2
+5,OK
+6,Cancel
+7,Activar
+~
+0,Espuma
+1,Vacio
+2,Error
+3,A
+4,B
+5,C
+~
+0,Run
+1,ActivarS
+~
+0,T4 80
+~
+0,Seq1 0
+1,Seq2 0
+2,Seq3 0
+3,SensorStep 0
+~
+Run=(Start+Run)*/Stop
+ActivarS|%DA|%DB|%DC=Run*Start
+%JSeq1:0|%2Seq3|%ASeq2=ActivarS
+%JSeq1:1=Seq1:0*/S0*/S1*/S2*OK
+%CA|%CB|%CC|%JSeq1:2=Seq1:1*S0*S1*/S2*OK
+%DA|%DC=Seq1:2*S0*S1*/S2*OK
+
+~END_CIRCUIT~
+
+~END_CUSTFN~
+~END_CUSTFNLABEL~
+0,0,
+1,0,
+2,0,
+3,0,
+4,0,
+~END_QUICKTAGS~
+~END_DEFINES~
+~END_BREAKPOINTS~
+192.168.1.5:9080
+~END_LASTIPADDR~
